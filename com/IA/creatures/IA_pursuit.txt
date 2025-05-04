@@ -1,5 +1,0 @@
-
-public function pursuit() {
-	// pursuit ia#01.3gp -> engage chemin si sur 10 cases détectée pnj ou pj est joignable... 
-	// faire tous les chemins prendre le plus rapide ou :)
-}
