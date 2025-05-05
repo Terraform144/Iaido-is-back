@@ -1,0 +1,62 @@
+Il est tout à fait normal que certaines applications purement basées sur ActionScript (sans Starling ou des frameworks similaires) puissent être lentes ou présenter des lag, même sur un PC hautement configuré. Cela peut provenir d'un code non optimisé, de mauvaises pratiques de programmation, ou simplement de limitations inhérentes à l'architecture pure de Flash.
+
+Voici plusieurs moyens d'améliorer la performance et d'accélérer ton application :
+
+1. Optimiser le Code
+a) Reduire les Gestionnaires d'événements
+Évite les gestionnaires d’événements globaux : Les gestionnaires d'événements ajoutés sur des objets non supprimés peuvent entraîner des lag lorsqu'il y a beaucoup d'objets. Utilisez removeEventListener pour nettoyer les événements lorsque ces objets sont retirés.
+b) Utiliser des Structures de Données Optimisées
+Listes et Tables : Remplace des structures de données simples par des listes ou tables d'objets si nécessaire. Par exemple, stockez vos sprites dans un tableau pour une meilleure gestion.
+c) Minimiser les Calculs Intensifs
+Mettre en Cache les Calculs : Si certaines opérations sont effectuées fréquemment (comme des calculs complexes), cachez les résultats et utilisez-les directement plutôt que de recalculer à chaque frame.
+d) Éviter les Appels Fréquents aux Méthodes
+Minimise l'appel de méthodes qui sont intensives en ressources, comme addChild, removeChild, etc., dans la boucle enterFrame.
+2. Optimiser la Gestion des Sprites
+a) Utilisation d'Images et Textures Optimisées
+Chargez les Images et Textures Correctement : Chargez vos images et textures au bon moment (par exemple, lorsque vous activez un objet ou une scène). Ne chargez pas toutes les ressources dès le début du programme.
+b) Limitation de la Résolution
+Utilisez des Sprites à Taille Fixe : Si possible, utilisez des sprites avec des tailles fixes et optimisées pour éviter la réduction de résolution dynamique.
+3. Gestion des Sprites 2D
+a) Optimiser les Transformations
+Utilisez Matrix au Lieu de Transform : Si vous effectuez de nombreuses transformations (comme rotation, scaling), utilisez le matrix pour éviter l'overhead de Transform.
+b) **Minimiser les Appels à draw() et render()
+Gardez les Sprites en Cache : Si certains sprites ne changent pas fréquemment, cachez-les dans une variable locale et mettez-les à jour uniquement lorsque nécessaire.
+4. Utilisation de Techniques Avancées
+a) Bunding et Compression
+Utilisez des Outils d'Optimisation : Utilisez des outils comme SWF optimizer pour compresser et optimiser votre SWF.
+b) Techniques d'Ancrage
+Optimisez les Anchors : Si vous utilisez des animations de transformation, optimisez les valeurs d'ancre (pivotX, pivotY) pour éviter des calculs inutiles.
+5. Exemple Pratique
+Voici quelques exemples concrets qui peuvent améliorer la performance :
+
+// Exemple de gestionnaire d'événements optimisé
+var buttonSprite:Sprite = new ButtonSprite();
+stage.addEventListener(MouseEvent.CLICK, handleButtonClick);
+
+function handleButtonClick(event:MouseEvent):void {
+    // Nettoyez le gestionnaire d'événements lorsqu'il n'est plus utilisé
+    stage.removeEventListener(MouseEvent.CLICK, handleButtonClick);
+    // Effectuez les actions spécifiques ici
+}
+
+// Exemple de charge et utilisation d'images optimisée
+var imageCache:Dictionary = new Dictionary();
+
+function loadImage(url:String):Bitmap {
+    if (!imageCache[url]) {
+        var bitmapData:BitmapData = BitmapData.load(new URLRequest(url));
+        imageCache[url] = new Bitmap(bitmapData);
+    }
+    return imageCache[url];
+}
+
+// Exemple d'utilisation de matrix pour des transformations
+var sprite:Sprite = new Sprite();
+sprite.graphics.beginFill(0xFF0000);
+sprite.graphics.drawCircle(50, 50, 30);
+sprite.graphics.endFill();
+sprite.transform.matrix.identity(); // Utilisez la matrice au lieu du transformateur
+
+// Exemple d'ancrage optimisé
+var sprite:Sprite = new Sprite();
+sprite.anchorX = 0.5; // Optimisez l'ancre pour éviter des calculs inutiles
