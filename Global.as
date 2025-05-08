@@ -49,11 +49,12 @@
 		
 		// Labyrinthe objects
 		public static var Dmy:dummy;
-		public static var Lab:Labyrinthe;
+		public static var Lab:Labyrint	he;
 		public static var CLICK_CREATURE:Creature;
 		public static var CLICK_ELEMENT;
 		public static var EVENEMENTS:Evenements;
 		public static var IS_COMBAT:Boolean;
+		public static var IS_ROARED:Boolean;
 		public static var IS_MAP:Boolean;
 		public static var GAME:Game;
 		public static var PLAYER:Player;
@@ -64,6 +65,9 @@
 		public static var TESTING:Testing;
 		public static var handPush:Number = 1;
 		
+		// Labyrinthe evenements
+		public static var IS_M21:Boolean;
+
 		public static var map;
 		
 		public static function setNavVisible(bool:Boolean) {

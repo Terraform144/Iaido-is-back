@@ -25,7 +25,7 @@
 		
 		public var position:Object = {l:1,c:1};
 		public var orientation:String = "left";
-		private var cs;
+		public var cs;
 
 		//
 		public var dl:DisplayLabyrinthe;

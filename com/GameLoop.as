@@ -6,7 +6,7 @@
 	import com.admobutils.ButtonLayout;
 	import com.ludus.creatures.Creature;
 	import com.managers.CreaturesManager;
-	import com.ludus.cinematiques.open_door;
+	import com.ludus.cinematiques.murAttaque;
 	import com.ludus.cinematiques.step_down;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
@@ -41,6 +41,7 @@
 			// init the game
 			Global.IS_COMBAT = false; Global.CLICK_CREATURE = null; 
 			
+
 			// init the loop
 //adIsVisible=true;
 			
@@ -147,7 +148,8 @@ if(Global.PLAYER.life < 50)  doTraces("player life " + Global.PLAYER.life);
 			try 
 			{
 				doActions();
-				
+//trace position dans le labyrinthe
+trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.orientation);
 				// 
 				if ( this.count++ < 50 && !Global.isGameover ) {
 					restart_game_loop();
@@ -160,20 +162,34 @@ if(Global.PLAYER.life < 50)  doTraces("player life " + Global.PLAYER.life);
 					case (Global.IsOpen > 1 && Global.IsOpening):
 						Global.IsOpening = false;
 						Global.SOUNDMANAGER.playSound('hammer_clap',3);
-					break;
+						break;
 					// game is succeeded
 					case (Global.isGamewin) :
 						Global.GAMELOOP.count = 75;
 						Global.SOUNDMANAGER.playSound('pshift');
 						Global.ROOT_CLIP.gotoAndStop("game_escape");
 						break;
-						
+					// Creature du donjon se manifeste lorsque les chances retombent
+					case ( (Global.score > 341) && !(Global.IS_ROARED) ):
+						if ( Utx.rnd(0,8) < 3 ) { 
+							Global.SOUNDMANAGER.playSound('dragonRoar');
+							Global.IS_ROARED = true;
+						}
+						break;
+
+					// mur 21 bouge
+					case ((Global.Lab.position.l == 2) && (Global.Lab.position.c == 5) && (!Global.IS_M21)) :
+						Global.CINEMATIQUE = Global.ROOT_CLIP.getChildByName("dmy_anim");
+						Global.SOUNDMANAGER.playSound('tension');
+						var murAttack = new murAttaque();
+						Global.CINEMATIQUE.addChild(murAttack);
+						Global.IS_M21 = true;
+						break;
 					// if the game is over
 					case (Global.PLAYER.life < 0 ) :
 						if( !Global.isGameover ) Global.SOUNDMANAGER.playSound('painscream');
-						Global.isGameover = true; Global.GAMELOOP.count = 75;
+						Global.isGameover = true; Global.GAMELOOP.count = 75;		
 						Global.ROOT_CLIP.gotoAndStop("game_over");
-						
 						break;
 						
 					case (!Global.IS_COMBAT):

@@ -16,7 +16,7 @@
 	
 	public class Player extends MovieClip
 	{
-		public var stats = {mana:320, life:320, dangerousness:30}; // todo restore to 300
+		public var stats = {mana:320, life:999, dangerousness:30}; // todo restore to 300
 		public var life:int;
 		
 		public var l_hand;
