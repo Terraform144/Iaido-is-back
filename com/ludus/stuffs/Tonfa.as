@@ -12,7 +12,7 @@
 			
 			super(_id);
 			
-			this.prop_attack = {push:5, hurl:8, prick:15,  kiaï:5};
+			this.prop_attack = {push:5, hurl:8, prick:15,  kiai:5};
 			this.prop_object = {longueur:0.30, poids:1, solidite:25};
 		}
 		

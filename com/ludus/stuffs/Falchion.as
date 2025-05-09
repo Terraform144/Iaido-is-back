@@ -15,7 +15,7 @@
 			
 			super(_id);
 			
-			this.prop_attack = {push:7, hurl:10, melee:15,  kiaï:15};
+			this.prop_attack = {push:7, hurl:10, melee:15,  kiai:15};
 			this.prop_object = {longueur:0.60, poids:2.5, solidite:50};
 			
 		}

@@ -49,7 +49,7 @@
 		
 		// Labyrinthe objects
 		public static var Dmy:dummy;
-		public static var Lab:Labyrint	he;
+		public static var Lab:Labyrinthe;
 		public static var CLICK_CREATURE:Creature;
 		public static var CLICK_ELEMENT;
 		public static var EVENEMENTS:Evenements;

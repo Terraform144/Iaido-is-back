@@ -163,12 +163,14 @@ trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.ori
 						Global.IsOpening = false;
 						Global.SOUNDMANAGER.playSound('hammer_clap',3);
 						break;
+						
 					// game is succeeded
 					case (Global.isGamewin) :
 						Global.GAMELOOP.count = 75;
 						Global.SOUNDMANAGER.playSound('pshift');
 						Global.ROOT_CLIP.gotoAndStop("game_escape");
 						break;
+
 					// Creature du donjon se manifeste lorsque les chances retombent
 					case ( (Global.score > 341) && !(Global.IS_ROARED) ):
 						if ( Utx.rnd(0,8) < 3 ) { 
@@ -185,6 +187,7 @@ trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.ori
 						Global.CINEMATIQUE.addChild(murAttack);
 						Global.IS_M21 = true;
 						break;
+
 					// if the game is over
 					case (Global.PLAYER.life < 0 ) :
 						if( !Global.isGameover ) Global.SOUNDMANAGER.playSound('painscream');
