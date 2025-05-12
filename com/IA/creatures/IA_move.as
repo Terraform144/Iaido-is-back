@@ -2,10 +2,10 @@
 {
 	import com.ludus.DM.Evenements;
 	import com.ludus.creatures.Creature;
-	
+
 	import flash.display.MovieClip;
 	import com.Utx;
-	
+	import flash.utils.getQualifiedClassName;
 	/*
 		activités : biologie, algèbre, functions, géométrie -> impressive 
 		astrophysique : dérivées et intégrales
@@ -52,7 +52,19 @@
 								&& !Global.Lab.dl.massiveObjectSurCase (
 									{l:(l+res_l),c:c}, creature
 								)
-							) creature.setCoordinates(l+res_l,c);
+							) {
+								switch(getQualifiedClassName(creature)) {
+									case 'com.ludus.creatures::MurAttack':
+										if(Global.IS_M21) {
+											creature.setCoordinates(l+res_l,c);
+										}
+										break;
+
+									default:
+										creature.setCoordinates(l+res_l,c); // faire bouger que si Global.IS_M21
+								}
+							}
+								 // faire bouger que si Global.IS_M21
 						} else {
 							if(Global.Lab.caseExist(l,c+res_c)
 								&& !Global.Lab.dl.entiteSurCase(
@@ -64,8 +76,18 @@
 								&& !Global.Lab.dl.massiveObjectSurCase (
 									{l:l, c:(c + res_c)}, creature
 								)
-							) creature.setCoordinates(l,c+res_c);
-						}
+							)  {
+								switch(getQualifiedClassName(creature)) {
+									case 'com.ludus.creatures::MurAttack':
+										if(Global.IS_M21) {
+											//creature.setCoordinates(l,c+res_c);
+										}
+										break;
+
+									default:
+										creature.setCoordinates(l,c+res_c); // faire bouger que si Global.IS_M21
+								}
+						}}
 						
 						if (creature != Global.CLICK_CREATURE) creature.updatePositionOnMap();
 						

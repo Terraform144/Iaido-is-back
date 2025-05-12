@@ -122,6 +122,7 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 					// todo redo this : qd objet pris pas tjs dans inventaire mais dans les mains...
 					if(inventaire.isCompatible(_stuff))
 					{
+						
 						// place weapon in left hand
 						l_hand.gotoAndStop(Utx.getLittleClassName(getQualifiedClassName(_stuff)));
 						
@@ -138,7 +139,9 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 					}
 
 				} catch (e:Error) {
+
 					trace("prendre:"+e);
+
 				}
 			//}
 		}
@@ -149,12 +152,15 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 		public function relacher(_stuff:Stuff)  
 		{// todo refactor - redefine
 			try {
+
 				inventaire.retirer(_stuff);
 				objects_manager.releaseOnGrid(_stuff);
 				_stuff.updatePositionOnMap();
 				
 			} catch (e:Error) {
+
 				trace("relacher:"+e);
+
 			}
 		}
 	}

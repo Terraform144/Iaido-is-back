@@ -1,4 +1,4 @@
-﻿package com   {
+﻿package com {
 	
 	import com.IA.creatures.IA_attack;
 	import com.IA.creatures.IA_move;
@@ -39,8 +39,7 @@
 			if (_vitesse > 0) Global.GAMESPEED = _vitesse;
 			
 			// init the game
-			Global.IS_COMBAT = false; Global.CLICK_CREATURE = null; 
-			
+			Global.IS_COMBAT = false; Global.CLICK_CREATURE = null;
 
 			// init the loop
 //adIsVisible=true;
@@ -58,7 +57,7 @@
 			timer.start();
 		}
 		
-		public function restart_game_loop():void 
+		public function restart_game_loop():void
 		{
 			this.loop(Global.GAMESPEED); 
 		}
@@ -163,7 +162,7 @@ trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.ori
 						Global.IsOpening = false;
 						Global.SOUNDMANAGER.playSound('hammer_clap',3);
 						break;
-						
+
 					// game is succeeded
 					case (Global.isGamewin) :
 						Global.GAMELOOP.count = 75;

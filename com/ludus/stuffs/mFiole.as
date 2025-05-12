@@ -15,10 +15,10 @@
 		
 		public function onclick(evt) {
 			
-			Global.PLAYER.life += 75;
+			Global.PLAYER.life += 120;
 			Global.SOUNDMANAGER.playSound('potion');
 			this.visible = false;
-			msg_player.setMessage(" life taken +75");
+			msg_player.setMessage(" life taken +120");
 			
 		}
 	}

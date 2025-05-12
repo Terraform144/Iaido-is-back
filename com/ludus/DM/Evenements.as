@@ -3,6 +3,7 @@
 	
 	import com.GameLoop;
 	import com.MiniLoop;
+
 	import com.ludus.creatures.Araignee;
 	import com.ludus.creatures.Annie;
 	import com.ludus.creatures.Bouclio;
@@ -12,6 +13,8 @@
 	import com.ludus.creatures.Lord_Khaos;
 	import com.ludus.creatures.Makura;
 	import com.ludus.creatures.Oeil_volant;
+	import com.ludus.creatures.MurAttack;
+
 	import com.ludus.stuffs.Door;
 	import com.ludus.stuffs.Longsword;
 	import com.ludus.stuffs.e_field;
@@ -92,7 +95,7 @@
 							monTableauDeCreatures[8] = maPopulation[19];
 							monTableauDeCreatures[9] = maPopulation[20];
 							monTableauDeCreatures[10] = maPopulation[21];
-							
+							monTableauDeCreatures[11] = maPopulation[44];
 							break;
 							
 						case 3:
@@ -281,34 +284,38 @@
 
 			if( !this.maPopulation ) this.maPopulation = new Vector.<com.ludus.creatures.Creature>;
 			
-			maPopulation.push(new Canard_reptile("c1")); maPopulation.push(new Oeil_volant("c2"));
+			maPopulation.push(new Canard_reptile("c1")); maPopulation.push(new Oeil_volant("c2")); //1
 			maPopulation.push(new Araignee("c3")); maPopulation.push(new Homme_poilu("c4"));
 			maPopulation.push(new Homme_poilu("c5")); maPopulation.push(new Araignee("c6"));
 			maPopulation.push(new Canard_reptile("c7")); maPopulation.push(new Oeil_volant("c8"));
 			maPopulation.push(new Annie("c9")); maPopulation.push(new Canard_reptile("c10"));
 			maPopulation.push(new Canard_reptile("c11"));
 
-			maPopulation.push(new Lord_Khaos("c12")); maPopulation.push(new Oeil_volant("c13"));
+			maPopulation.push(new Lord_Khaos("c12")); maPopulation.push(new Oeil_volant("c13")); 
 			maPopulation.push(new Araignee("c14")); maPopulation.push(new Annie("c15"));
 			maPopulation.push(new Oeil_volant("c16")); maPopulation.push(new Araignee("c17"));
 			maPopulation.push(new Canard_reptile("c18")); maPopulation.push(new Oeil_volant("c19"));
 			maPopulation.push(new Araignee("c20")); maPopulation.push(new Canard_reptile("c21"));
 			maPopulation.push(new Canard_reptile("c22"));
 			
-			maPopulation.push(new Canard_reptile("c23")); maPopulation.push(new Oeil_volant("c24"));
+			
+			maPopulation.push(new Canard_reptile("c23")); maPopulation.push(new Oeil_volant("c24")); //13
 			maPopulation.push( new Araignee("c25")); maPopulation.push( new Annie("c26"));
 			maPopulation.push(new Oeil_volant("c27")); maPopulation.push(new Araignee("c28"));
 			maPopulation.push( new Canard_reptile("c29")); maPopulation.push( new Oeil_volant("c30"));
 			maPopulation.push( new Araignee("c31")); maPopulation.push( new Canard_reptile("c32"));
 			maPopulation.push( new Canard_reptile("c33"));
 			
-			maPopulation.push( new Canard_reptile("c34")); maPopulation.push( new Oeil_volant("c35"));
+			maPopulation.push( new Canard_reptile("c34")); maPopulation.push( new Oeil_volant("c35")); //19
 			maPopulation.push( new Araignee("c36")); maPopulation.push( new Annie("c37"));
 			maPopulation.push( new Oeil_volant("c38")); maPopulation.push( new Araignee("c39"));
 			maPopulation.push( new Canard_reptile("c40")); maPopulation.push( new Oeil_volant("c41"));
 			maPopulation.push( new Lord_Khaos("c42")); maPopulation.push( new Makura("c43"));
 			maPopulation.push( new Canard_reptile("c44"));
 			
+			// last population
+			maPopulation.push(new MurAttack("c45")); //44
+
 			maPopulation[0].setCoordinates(7, 5);
 			maPopulation[1].setCoordinates(1,18);
 			maPopulation[2].setCoordinates(1,16);
@@ -332,10 +339,10 @@
 			maPopulation[19].setCoordinates(16,16);
 			maPopulation[20].setCoordinates(18,10);
 			maPopulation[21].setCoordinates(25,3);
-			
+
 			maPopulation[22].setCoordinates(1,7);
 			maPopulation[23].setCoordinates(1,17);
-			maPopulation[24].setCoordinates(1,18);
+			maPopulation[24].setCoordinates(1,5);
 			maPopulation[25].setCoordinates(3,13);
 			maPopulation[26].setCoordinates(7,6);
 			maPopulation[27].setCoordinates(14,8);
@@ -356,6 +363,9 @@
 			maPopulation[41].setCoordinates(27,24);
 			maPopulation[42].setCoordinates(28,24);
 			maPopulation[43].setCoordinates(25,3);
+
+			// last population
+			maPopulation[44].setCoordinates(1,5);
 		}
 		
 
