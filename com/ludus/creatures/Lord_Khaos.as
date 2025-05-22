@@ -10,7 +10,7 @@
 			super(_id);
 			this.firstName = "Lord Khaos";
 			this.life = 200;
-			this.bite = {miss:0,soft:45,medium:100,hard:250};
+			this.bite = {miss:0,soft:25,medium:50,hard:120};
 		}
 	}
 	

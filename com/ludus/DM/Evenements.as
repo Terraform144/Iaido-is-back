@@ -1,6 +1,6 @@
 ﻿package com.ludus.DM
 {
-	
+
 	import com.GameLoop;
 	import com.MiniLoop;
 
@@ -32,6 +32,7 @@
 	import com.ludus.stuffs.stairs_up;
 	import flash.display.DisplayObject;
 	
+	import com.ludus.cinematiques.murAttaque;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.display.Shape;
@@ -79,7 +80,6 @@
 							monTableauDeCreatures[8] = maPopulation[8];
 							monTableauDeCreatures[9] = maPopulation[9]; 
 							monTableauDeCreatures[10] = maPopulation[10];
-							
 							break;				
 							
 						case 2:
@@ -95,7 +95,7 @@
 							monTableauDeCreatures[8] = maPopulation[19];
 							monTableauDeCreatures[9] = maPopulation[20];
 							monTableauDeCreatures[10] = maPopulation[21];
-							monTableauDeCreatures[11] = maPopulation[44];
+							//monTableauDeCreatures[11] = maPopulation[44];
 							break;
 							
 						case 3:
@@ -111,7 +111,6 @@
 							monTableauDeCreatures[8] = maPopulation[30];
 							monTableauDeCreatures[9] = maPopulation[31];
 							monTableauDeCreatures[10] = maPopulation[32];
-							
 							break;
 							
 						case 4:
@@ -127,7 +126,6 @@
 							monTableauDeCreatures[8] = maPopulation[41];
 							monTableauDeCreatures[9] = maPopulation[42];
 							monTableauDeCreatures[10] = maPopulation[43];
-							
 							break;
 					}
 					
@@ -147,6 +145,7 @@
 			//
 			
 		}
+
 		public function initObjettheque():void 
 		{
 				
@@ -195,92 +194,90 @@
 			
 			
 			maObjettheque[32] = (new Longsword("s20"));
-
-
 		}
 		
 		public function loadStuffs(numLevel) {
 			
-				try{
-					if( !this.monTableauDeStuffs ) this.monTableauDeStuffs = new Vector.<com.ludus.stuffs.Stuff>;
-					switch (Global.numLevel) 
-					{
-						case 1:
-							monTableauDeStuffs[0] = maObjettheque[0];
-							monTableauDeStuffs[1] = maObjettheque[1];
-							monTableauDeStuffs[2] = maObjettheque[2];
-							monTableauDeStuffs[3] = maObjettheque[3];
-							
-							monTableauDeStuffs[4] = maObjettheque[4];
-							monTableauDeStuffs[5] = maObjettheque[5];
-							monTableauDeStuffs[6] = maObjettheque[6];
-							monTableauDeStuffs[7] = maObjettheque[7];
+			try{
+				if( !this.monTableauDeStuffs ) this.monTableauDeStuffs = new Vector.<com.ludus.stuffs.Stuff>;
+				switch (Global.numLevel) 
+				{
+					case 1:
+						monTableauDeStuffs[0] = maObjettheque[0];
+						monTableauDeStuffs[1] = maObjettheque[1];
+						monTableauDeStuffs[2] = maObjettheque[2];
+						monTableauDeStuffs[3] = maObjettheque[3];
 						
-							monTableauDeStuffs[8] = maObjettheque[8];
-							monTableauDeStuffs[9] = maObjettheque[9];
-							monTableauDeStuffs[10] = maObjettheque[10];
-							monTableauDeStuffs[11] = maObjettheque[11];
-							monTableauDeStuffs[12] = maObjettheque[12];
-							monTableauDeStuffs[13] = maObjettheque[13];
-							break;
-							
-						case 2:
-
-							// rays
-							monTableauDeStuffs[1] = maObjettheque[14];
-							
-							// doors
-							monTableauDeStuffs[2] = maObjettheque[15];
-							monTableauDeStuffs[3] = maObjettheque[16];
-							monTableauDeStuffs[4] = maObjettheque[17];
-							monTableauDeStuffs[5] = maObjettheque[18];
-							monTableauDeStuffs[6] = maObjettheque[19];
-							
-							monTableauDeStuffs[7] = maObjettheque[20];
-							monTableauDeStuffs[8] = maObjettheque[21];
-							
-							// weapon
-							monTableauDeStuffs[9] = maObjettheque[32];
-							break;
-							
-						case 3:
-							monTableauDeStuffs[0] = maObjettheque[22];
-							monTableauDeStuffs[1] = maObjettheque[23];
-							break;
-							
-						case 4:
-							monTableauDeStuffs[0] = maObjettheque[27];
-							monTableauDeStuffs[2] = maObjettheque[24];
-							monTableauDeStuffs[3] = maObjettheque[25];
-							monTableauDeStuffs[1] = maObjettheque[26];
-							monTableauDeStuffs[4] = maObjettheque[28];
-							monTableauDeStuffs[5] = maObjettheque[29];
-							monTableauDeStuffs[6] = maObjettheque[30];
-							break;
-					}
-
+						monTableauDeStuffs[4] = maObjettheque[4];
+						monTableauDeStuffs[5] = maObjettheque[5];
+						monTableauDeStuffs[6] = maObjettheque[6];
+						monTableauDeStuffs[7] = maObjettheque[7];
 					
-					// update position of stuff symbol on map
-					for each (var s:Stuff in monTableauDeStuffs) {
-                        var bool = true;
-						switch (getQualifiedSuperclassName(s)) {
-							case 'com.ludus.stuffs::Stairs':
-								bool = false;
-								break;
-							case 'com.ludus.stuffs::Door':
-								bool = false;
-								break;
-						}
-						if(bool) s.updatePositionOnMap();
-					}
+						monTableauDeStuffs[8] = maObjettheque[8];
+						monTableauDeStuffs[9] = maObjettheque[9];
+						monTableauDeStuffs[10] = maObjettheque[10];
+						monTableauDeStuffs[11] = maObjettheque[11];
+						monTableauDeStuffs[12] = maObjettheque[12];
+						monTableauDeStuffs[13] = maObjettheque[13];
+						break;
+						
+					case 2:
 
-				} catch (e:Error) {
-					trace ( "loadStuffs: " + e );
+						// rays
+						monTableauDeStuffs[1] = maObjettheque[14];
+						
+						// doors
+						monTableauDeStuffs[2] = maObjettheque[15];
+						monTableauDeStuffs[3] = maObjettheque[16];
+						monTableauDeStuffs[4] = maObjettheque[17];
+						monTableauDeStuffs[5] = maObjettheque[18];
+						monTableauDeStuffs[6] = maObjettheque[19];
+						
+						monTableauDeStuffs[7] = maObjettheque[20];
+						monTableauDeStuffs[8] = maObjettheque[21];
+						
+						// weapon
+						monTableauDeStuffs[9] = maObjettheque[32];
+						break;
+						
+					case 3:
+						monTableauDeStuffs[0] = maObjettheque[22];
+						monTableauDeStuffs[1] = maObjettheque[23];
+						break;
+						
+					case 4:
+						monTableauDeStuffs[0] = maObjettheque[27];
+						monTableauDeStuffs[2] = maObjettheque[24];
+						monTableauDeStuffs[3] = maObjettheque[25];
+						monTableauDeStuffs[1] = maObjettheque[26];
+						monTableauDeStuffs[4] = maObjettheque[28];
+						monTableauDeStuffs[5] = maObjettheque[29];
+						monTableauDeStuffs[6] = maObjettheque[30];
+						break;
 				}
+				
+				// update position of stuff symbol on map
+				for each (var s:Stuff in monTableauDeStuffs) {
+					var bool = true;
+					switch (getQualifiedSuperclassName(s)) {
+						case 'com.ludus.stuffs::Stairs':
+							bool = false;
+							break;
+						case 'com.ludus.stuffs::Door':
+							bool = false;
+							break;
+					}
+					if(bool) s.updatePositionOnMap();
+				}
+
+			} catch (e:Error) {
+				trace ( "loadStuffs: " + e );
+			}
 			
 		}
 		
-		public function initPopulation() {
+		public function initPopulation() 
+		{
 
 			if( !this.maPopulation ) this.maPopulation = new Vector.<com.ludus.creatures.Creature>;
 			
@@ -298,7 +295,6 @@
 			maPopulation.push(new Araignee("c20")); maPopulation.push(new Canard_reptile("c21"));
 			maPopulation.push(new Canard_reptile("c22"));
 			
-			
 			maPopulation.push(new Canard_reptile("c23")); maPopulation.push(new Oeil_volant("c24")); //13
 			maPopulation.push( new Araignee("c25")); maPopulation.push( new Annie("c26"));
 			maPopulation.push(new Oeil_volant("c27")); maPopulation.push(new Araignee("c28"));
@@ -314,7 +310,7 @@
 			maPopulation.push( new Canard_reptile("c44"));
 			
 			// last population
-			maPopulation.push(new MurAttack("c45")); //44
+			//maPopulation.push(new MurAttack("c45")); //44
 
 			maPopulation[0].setCoordinates(7, 5);
 			maPopulation[1].setCoordinates(1,18);
@@ -365,10 +361,8 @@
 			maPopulation[43].setCoordinates(25,3);
 
 			// last population
-			maPopulation[44].setCoordinates(1,5);
+			//maPopulation[44].setCoordinates(1,5);
 		}
-		
-
 		
 		public function Evenements() 
 		{
@@ -398,14 +392,26 @@
 			this.that = Lab;
 		}
 		
-		
 		public function displayCreature(_creature:Creature, element:String, that:Labyrinthe) 
 		{
 
 			(that.getChildByName(element) as MovieClip).addChild(_creature as MovieClip);
 			
 			Creature.get_creature_position(_creature);
-			
+
+			if( !Global.IS_M21 && (getQualifiedClassName(_creature) == "com.ludus.creatures::MurAttack") ) {
+				if((Global.numLevel == 2) && (Global.Lab.position.l == 2) && (Global.Lab.position.c == 4)) {
+					// mur
+					Global.CINEMATIQUE = Global.ROOT_CLIP.getChildByName("dmy_anim");
+					Global.SOUNDMANAGER.playSound('tension');
+					var murAttack = new murAttaque();
+					Global.CINEMATIQUE.addChild(murAttack);
+					Global.IS_M21 = true;
+				}
+			}else {
+				//
+			}
+
 		}
 
 		public function displayStuff(_stuff:Stuff, element:String, that:Labyrinthe) 

@@ -10,8 +10,8 @@
 			super(_id);
 			
 			this.firstName = 'Makura';
-			this.life = 999;
-			this.bite = {miss:0, soft:25, medium:50, hard:75};
+			this.life = 9999;
+			this.bite = {miss:0, soft:5, medium:10, hard:15};
 			
 			// stats
 			this.stats.intelligence *= 10;  // intelligence of makura

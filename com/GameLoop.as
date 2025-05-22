@@ -15,7 +15,7 @@
 	import flash.utils.Timer;
 	import com.admobutils.SimpleButton;
 //import com.milkmangames.nativeextensions.*;
-//import com.milkmangames.nativeextensions.events.*;	
+//import com.milkmangames.nativeextensions.events.*;
 	
     import flash.text.TextField;
     import flash.display.Sprite;
@@ -148,7 +148,7 @@ if(Global.PLAYER.life < 50)  doTraces("player life " + Global.PLAYER.life);
 			{
 				doActions();
 //trace position dans le labyrinthe
-trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.orientation);
+//trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.orientation);
 				// 
 				if ( this.count++ < 50 && !Global.isGameover ) {
 					restart_game_loop();
@@ -176,15 +176,6 @@ trace(Global.Lab.position.l + " " + Global.Lab.position.c + " " + Global.Lab.ori
 							Global.SOUNDMANAGER.playSound('dragonRoar');
 							Global.IS_ROARED = true;
 						}
-						break;
-
-					// mur 21 bouge
-					case ((Global.Lab.position.l == 2) && (Global.Lab.position.c == 5) && (!Global.IS_M21)) :
-						Global.CINEMATIQUE = Global.ROOT_CLIP.getChildByName("dmy_anim");
-						Global.SOUNDMANAGER.playSound('tension');
-						var murAttack = new murAttaque();
-						Global.CINEMATIQUE.addChild(murAttack);
-						Global.IS_M21 = true;
 						break;
 
 					// if the game is over

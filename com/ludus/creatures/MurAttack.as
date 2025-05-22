@@ -10,7 +10,7 @@
 			super(_id);
 			this.firstName = "Mur Attack";
 			this.life = 400;
-			this.bite = {miss:0,soft:10,medium:15,hard:20};
+			this.bite = {miss:0,soft:20,medium:40,hard:80};
 		}
 	}
 }

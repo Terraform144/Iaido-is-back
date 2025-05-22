@@ -10,7 +10,7 @@
 			super(_id);
 			
 			this.life = 65;
-			this.bite = {miss:0,soft:25,medium:50,hard:75};
+			this.bite = {miss:0,soft:10,medium:15,hard:20};
 		}
 	}
 	

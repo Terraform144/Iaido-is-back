@@ -31,7 +31,6 @@
 				l = creature.getCoordinates().l;
 				c = creature.getCoordinates().c;
 				// if in the visibility of the user
-				// if in the visibility of the user
 				if(l!=0 && creature != Global.CLICK_CREATURE && creature.life >0) // if creature alive and not last Clicked
 				{	
 					try {
@@ -53,18 +52,27 @@
 									{l:(l+res_l),c:c}, creature
 								)
 							) {
+								// if it's a MurAttack
 								switch(getQualifiedClassName(creature)) {
 									case 'com.ludus.creatures::MurAttack':
-										if(Global.IS_M21) {
-											creature.setCoordinates(l+res_l,c);
+										if(Global.IS_M21 && Global.Lab.position.c==5) {// faire bouger que si Global.IS_M21
+											creature.setCoordinates(( (l<4) ? (l+1) : l), c) ; //si mur arrive au mur de droite, il n'avance plus
+											if ( (Global.Lab.position.c==5) && (Global.Lab.position.l==l+1) && (Global.Lab.position.l<4) )
+											{
+												(Global.Lab.position.l<4)?(Global.Lab.position.l += 1):(Global.Lab.position.l);
+											}
+											if (Global.Lab.position.l<=5 && l<=4 && Global.Lab.position.c == 5)
+											{
+												creature.addCreatureToCombat(creature);
+											}
 										}
 										break;
-
+										
 									default:
 										creature.setCoordinates(l+res_l,c); // faire bouger que si Global.IS_M21
 								}
 							}
-								 // faire bouger que si Global.IS_M21
+								 
 						} else {
 							if(Global.Lab.caseExist(l,c+res_c)
 								&& !Global.Lab.dl.entiteSurCase(

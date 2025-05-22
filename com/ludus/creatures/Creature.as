@@ -132,6 +132,14 @@
 			}
 			
 		}
+
+		public function addCreatureToCombat(_creature:Creature) {
+			
+			Global.CLICK_CREATURE = _creature;
+			Global.CLICK_ELEMENT = _creature.parent;
+			
+			if( Global.CLICK_CREATURE.life > 0 && (!Global.IS_MAP)) Global.ROOT_CLIP.gotoAndStop( "enterTheCombat" );
+		}
 		
 		/**
 		 * strike the opponnent

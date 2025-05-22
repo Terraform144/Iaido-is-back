@@ -9,7 +9,9 @@
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import flash.display.BlendMode;
-	
+	import fl.motion.Color;
+	import flash.geom.ColorTransform;
+
 	public class CombatManager
 	{
 		private var l_hand, brst;
@@ -70,6 +72,34 @@
 			if (Global.IS_COMBAT) disengagement();
 		}
 		
+		// Questa funcione mette la creature in bianco a tre volte
+		public function flashCreature(creature:Creature) {
+
+			// 1. Stocke la couleur d'origine
+			var originalColor:ColorTransform = creature.transform.colorTransform;
+
+			// 2. Crée un Timer pour le clignotement (500ms ici, 6 fois)
+			var blinkTimer:Timer = new Timer(100, 6); // 100ms intervalle, 6 fois (donc 3 flashs)
+
+			// 3. Variable d'état pour alterner entre blanc et original
+			var isWhite:Boolean = false;
+
+			// 4. Fonction de clignotement
+			blinkTimer.addEventListener(TimerEvent.TIMER, function(e:TimerEvent):void {
+				if (isWhite) {
+					creature.transform.colorTransform = originalColor;
+				} else {
+					var whiteTint:ColorTransform = new ColorTransform();
+					whiteTint.color = 0xFFFFFF;
+					creature.transform.colorTransform = whiteTint;
+				}
+				isWhite = !isWhite;
+			});
+
+			// 5. Démarre le clignotement
+			blinkTimer.start();
+		}
+
 		public function impactCreature(entity, impct) 
 		{
 			var crtr, plr;
@@ -79,7 +109,7 @@
 			{
 				
 				crtr = entity as Creature;
-				crtr.life -= impct; 
+				crtr.life -= impct; flashCreature(crtr);
 					setScore(impct);
 				if ( crtr.life < 0) {
 					crtr.alive = false;
