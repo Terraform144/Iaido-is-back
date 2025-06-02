@@ -100,19 +100,20 @@
 					var ratio = Global.PLAYER.life / 777; 
 					barreVie.width = ratio*100;
 
+					// if creature is vivace - attacking
+					var ia_m:IA_move = new IA_move(); ia_m.move();
+					ia_a = new IA_attack(); ia_a.attack();
+
 					// actions of the move creature IA
 					if (Global.IS_COMBAT) {
 						Creature.get_creature_position(Global.CLICK_CREATURE);
 					}
-				
-					// if creature is vivace - attacking
-					var ia_m:IA_move = new IA_move(); ia_m.move();
-					ia_a = new IA_attack(); ia_a.attack();
-				
+					
 					{ // to exec finally
 						if(Global.CLICK_CREATURE) {Global.Dmy.vivace_creature();}
 					}
-				} catch (e:Error)    {
+
+				} catch (e:Error) {
 					trace("doAction" + e.message);
 				}
 				
@@ -158,7 +159,7 @@ if(Global.PLAYER.life < 50)  doTraces("player life " + Global.PLAYER.life);
 				switch(true) 
 				{
 					//door of the exit opening
-					case (Global.IsOpen > 1 && Global.IsOpening):
+					case (Global.IsOpen >= 1 && Global.IsOpening):
 						Global.IsOpening = false;
 						Global.SOUNDMANAGER.playSound('hammer_clap',3);
 						break;

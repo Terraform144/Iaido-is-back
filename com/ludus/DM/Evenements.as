@@ -14,6 +14,7 @@
 	import com.ludus.creatures.Makura;
 	import com.ludus.creatures.Oeil_volant;
 	import com.ludus.creatures.MurAttack;
+	import com.ludus.creatures.Coffre;
 
 	import com.ludus.stuffs.Door;
 	import com.ludus.stuffs.Longsword;
@@ -39,6 +40,7 @@
 	import flash.display.Sprite;
 	import flash.events.GameInputEvent;
 	import flash.utils.getDefinitionByName;
+	import flash.utils.Dictionary;
 	
 	import com.Utx;
 	
@@ -52,7 +54,8 @@
 	{
 		public var that;
 		
-		public var monTableauDeCreatures:Vector.<Creature>;public var maPopulation:Vector.<Creature>;
+		public var monTableauDeCreatures:Vector.<Creature>;public var maPopulation:Dictionary;
+
 		public var monTableauDeStuffs:Vector.<Stuff>; public var maObjettheque:Vector.<Stuff>;
 		public var monTableauArtefacts:Vector.<Object>;
 		
@@ -60,7 +63,7 @@
 		
 		public function loadCreatures(numLevel) {
 			
-			if( !this.monTableauDeCreatures ) this.monTableauDeCreatures = new Vector.<com.ludus.creatures.Creature>;
+			this.monTableauDeCreatures = new Vector.<com.ludus.creatures.Creature>;
 			{// creatures
 				
 				try{
@@ -69,63 +72,29 @@
 					{
 						case 1:
 							// level 1
-							monTableauDeCreatures[0] = maPopulation[0];
-							monTableauDeCreatures[1] = maPopulation[1];
-							monTableauDeCreatures[2] = maPopulation[2];
-							monTableauDeCreatures[3] = maPopulation[3];
-							monTableauDeCreatures[4] = maPopulation[4];
-							monTableauDeCreatures[5] = maPopulation[5];
-							monTableauDeCreatures[6] = maPopulation[6];
-							monTableauDeCreatures[7] = maPopulation[7];
-							monTableauDeCreatures[8] = maPopulation[8];
-							monTableauDeCreatures[9] = maPopulation[9]; 
-							monTableauDeCreatures[10] = maPopulation[10];
+							monTableauDeCreatures[0] = maPopulation['araignee'];
+							monTableauDeCreatures[1] = maPopulation['poilu'];
+
 							break;				
 							
 						case 2:
 							// level 2
-							monTableauDeCreatures[0] = maPopulation[11];
-							monTableauDeCreatures[1] = maPopulation[12];
-							monTableauDeCreatures[2] = maPopulation[13];
-							monTableauDeCreatures[3] = maPopulation[14];
-							monTableauDeCreatures[4] = maPopulation[15];
-							monTableauDeCreatures[5] = maPopulation[16];
-							monTableauDeCreatures[6] = maPopulation[17];
-							monTableauDeCreatures[7] = maPopulation[18];
-							monTableauDeCreatures[8] = maPopulation[19];
-							monTableauDeCreatures[9] = maPopulation[20];
-							monTableauDeCreatures[10] = maPopulation[21];
-							//monTableauDeCreatures[11] = maPopulation[44];
+							monTableauDeCreatures[0] = maPopulation['lordtwin'];
+							monTableauDeCreatures[1] = maPopulation['oeil1'];
+							monTableauDeCreatures[2] = maPopulation['speedy'];
+							monTableauDeCreatures[3] = maPopulation['mur'];
 							break;
 							
 						case 3:
 							// level 3
-							monTableauDeCreatures[0] = maPopulation[22];
-							monTableauDeCreatures[1] = maPopulation[23];
-							monTableauDeCreatures[2] = maPopulation[24];
-							monTableauDeCreatures[3] = maPopulation[25];
-							monTableauDeCreatures[4] = maPopulation[26];
-							monTableauDeCreatures[5] = maPopulation[27];
-							monTableauDeCreatures[6] = maPopulation[28];
-							monTableauDeCreatures[7] = maPopulation[29];
-							monTableauDeCreatures[8] = maPopulation[30];
-							monTableauDeCreatures[9] = maPopulation[31];
-							monTableauDeCreatures[10] = maPopulation[32];
+							//monTableauDeCreatures[0] = maPopulation['carnardBoss'];
+							//monTableauDeCreatures[1] = maPopulation['oeilBoss'];
 							break;
 							
 						case 4:
 							// level 4
-							monTableauDeCreatures[0] = maPopulation[33];
-							monTableauDeCreatures[1] = maPopulation[34];
-							monTableauDeCreatures[2] = maPopulation[35];
-							monTableauDeCreatures[3] = maPopulation[36];
-							monTableauDeCreatures[4] = maPopulation[37];
-							monTableauDeCreatures[5] = maPopulation[38];
-							monTableauDeCreatures[6] = maPopulation[39];
-							monTableauDeCreatures[7] = maPopulation[40];
-							monTableauDeCreatures[8] = maPopulation[41];
-							monTableauDeCreatures[9] = maPopulation[42];
-							monTableauDeCreatures[10] = maPopulation[43];
+							monTableauDeCreatures[0] = maPopulation['lord'];
+							monTableauDeCreatures[1] = maPopulation['coffre'];
 							break;
 					}
 					
@@ -139,7 +108,7 @@
 				}
 			}
 		}
-		
+	
 		public function initCoordinates() {
 			
 			//
@@ -279,91 +248,46 @@
 		public function initPopulation() 
 		{
 
+			maPopulation = new Dictionary();
 			if( !this.maPopulation ) this.maPopulation = new Vector.<com.ludus.creatures.Creature>;
 			
-			maPopulation.push(new Canard_reptile("c1")); maPopulation.push(new Oeil_volant("c2")); //1
-			maPopulation.push(new Araignee("c3")); maPopulation.push(new Homme_poilu("c4"));
-			maPopulation.push(new Homme_poilu("c5")); maPopulation.push(new Araignee("c6"));
-			maPopulation.push(new Canard_reptile("c7")); maPopulation.push(new Oeil_volant("c8"));
-			maPopulation.push(new Annie("c9")); maPopulation.push(new Canard_reptile("c10"));
-			maPopulation.push(new Canard_reptile("c11"));
+			// creatures du niveau 1
+			maPopulation['araignee'] = new Araignee("c_1_5"); maPopulation['poilu']=new Homme_poilu("c_1_10");
 
-			maPopulation.push(new Lord_Khaos("c12")); maPopulation.push(new Oeil_volant("c13")); 
-			maPopulation.push(new Araignee("c14")); maPopulation.push(new Annie("c15"));
-			maPopulation.push(new Oeil_volant("c16")); maPopulation.push(new Araignee("c17"));
-			maPopulation.push(new Canard_reptile("c18")); maPopulation.push(new Oeil_volant("c19"));
-			maPopulation.push(new Araignee("c20")); maPopulation.push(new Canard_reptile("c21"));
-			maPopulation.push(new Canard_reptile("c22"));
-			
-			maPopulation.push(new Canard_reptile("c23")); maPopulation.push(new Oeil_volant("c24")); //13
-			maPopulation.push( new Araignee("c25")); maPopulation.push( new Annie("c26"));
-			maPopulation.push(new Oeil_volant("c27")); maPopulation.push(new Araignee("c28"));
-			maPopulation.push( new Canard_reptile("c29")); maPopulation.push( new Oeil_volant("c30"));
-			maPopulation.push( new Araignee("c31")); maPopulation.push( new Canard_reptile("c32"));
-			maPopulation.push( new Canard_reptile("c33"));
-			
-			maPopulation.push( new Canard_reptile("c34")); maPopulation.push( new Oeil_volant("c35")); //19
-			maPopulation.push( new Araignee("c36")); maPopulation.push( new Annie("c37"));
-			maPopulation.push( new Oeil_volant("c38")); maPopulation.push( new Araignee("c39"));
-			maPopulation.push( new Canard_reptile("c40")); maPopulation.push( new Oeil_volant("c41"));
-			maPopulation.push( new Lord_Khaos("c42")); maPopulation.push( new Makura("c43"));
-			maPopulation.push( new Canard_reptile("c44"));
-			
-			// last population
-			//maPopulation.push(new MurAttack("c45")); //44
+				// coordonnées des créatures
+				// 1ere population
+				maPopulation['araignee'].setCoordinates(1, 18); //5
+				maPopulation['poilu'].setCoordinates(1,9);
 
-			maPopulation[0].setCoordinates(7, 5);
-			maPopulation[1].setCoordinates(1,18);
-			maPopulation[2].setCoordinates(1,16);
-			maPopulation[3].setCoordinates(3,13);
-			maPopulation[4].setCoordinates(1,8);
-			maPopulation[5].setCoordinates(14,8);
-			maPopulation[6].setCoordinates(14,7);
-			maPopulation[7].setCoordinates(14,19);
-			maPopulation[8].setCoordinates(18,9);
-			maPopulation[9].setCoordinates(25,2);
-			maPopulation[10].setCoordinates(16,15);
+			// creatures du niveau 2
+			maPopulation['lordtwin'] = new Lord_Khaos("c_2_5"); maPopulation['oeil1'] = (new Oeil_volant("c_2_10")); 
+			maPopulation['speedy'] = (new Araignee("c_2_15")); maPopulation['mur']=(new MurAttack("c_2_20")); 
 			
-			maPopulation[11].setCoordinates(7,6);
-			maPopulation[12].setCoordinates(1,9);
-			maPopulation[13].setCoordinates(1,17);
-			maPopulation[14].setCoordinates(1,19);
-			maPopulation[15].setCoordinates(3,13);
-			maPopulation[16].setCoordinates(15,8);
-			maPopulation[17].setCoordinates(15,10);
-			maPopulation[18].setCoordinates(14,20);
-			maPopulation[19].setCoordinates(16,16);
-			maPopulation[20].setCoordinates(18,10);
-			maPopulation[21].setCoordinates(25,3);
+				// coordonnées des créatures
+				// 2eme population
+				maPopulation['lordtwin'].setCoordinates(1,19); //5
+				maPopulation['oeil1'].setCoordinates(1,17);
+				maPopulation['speedy'].setCoordinates(1,9); //15
+				maPopulation['mur'].setCoordinates(1,5);
 
-			maPopulation[22].setCoordinates(1,7);
-			maPopulation[23].setCoordinates(1,17);
-			maPopulation[24].setCoordinates(1,5);
-			maPopulation[25].setCoordinates(3,13);
-			maPopulation[26].setCoordinates(7,6);
-			maPopulation[27].setCoordinates(14,8);
-			maPopulation[28].setCoordinates(14,9);
-			maPopulation[29].setCoordinates(14,19);
-			maPopulation[30].setCoordinates(17,9);
-			maPopulation[31].setCoordinates(17,15);
-			maPopulation[32].setCoordinates(25,3);
-			
-			maPopulation[33].setCoordinates(1,7);
-			maPopulation[34].setCoordinates(1,12);
-			maPopulation[35].setCoordinates(1,19);
-			maPopulation[36].setCoordinates(3,13);
-			maPopulation[37].setCoordinates(7,6);
-			maPopulation[38].setCoordinates(14,6);
-			maPopulation[39].setCoordinates(14,7);
-			maPopulation[40].setCoordinates(14,18);
-			maPopulation[41].setCoordinates(27,24);
-			maPopulation[42].setCoordinates(28,24);
-			maPopulation[43].setCoordinates(25,3);
+				
+			// creatures du niveau 3
+			//maPopulation['canardBoss']=new Canard_reptile("c_3_5"); maPopulation['oeilBoss']=new Oeil_volant("c_3_10"); //13
 
-			// last population
-			//maPopulation[44].setCoordinates(1,5);
+				// coordonnées des créatures
+				// 3eme population
+				//maPopulation['canardBoss'].setCoordinates(1,19); //5
+				//maPopulation['oeilBoss'].setCoordinates(23,9);
+
+
+			maPopulation['lord']= new Lord_Khaos("c_4_5"); maPopulation['coffre']= new Coffre("c_4_10");
+
+				// coordonnées des créatures
+				// 4eme population
+				maPopulation['lord'].setCoordinates(27,24); //5
+			    maPopulation['coffre'].setCoordinates(15,9); //5			
 		}
-		
+
 		public function Evenements() 
 		{
 			

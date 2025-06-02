@@ -70,6 +70,7 @@
 										
 									default:
 										creature.setCoordinates(l+res_l,c); // faire bouger que si Global.IS_M21
+										break;
 								}
 							}
 								 
@@ -94,6 +95,7 @@
 
 									default:
 										creature.setCoordinates(l,c+res_c); // faire bouger que si Global.IS_M21
+										break;
 								}
 						}}
 						

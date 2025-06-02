@@ -18,16 +18,16 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/51.1">
     <id>IIB</id>
-    <versionNumber>1.0.0</versionNumber>
+    <versionNumber>1.2.0</versionNumber>
     <versionLabel>road 2025</versionLabel>
     <filename>IIB</filename>
-    <description/>
+    <description>Iaido is searching form friends of him...</description>
     <name>IIB</name>
-    <copyright/>
+    <copyright>Terraform144</copyright>
     <initialWindow>
         <content>IIB.swf</content>
-        <systemChrome>standard</systemChrome>
-        <transparent>false</transparent>
+        <systemChrome>none</systemChrome>
+        <transparent>true</transparent>
         <visible>true</visible>
         <fullScreen>true</fullScreen>
         <aspectRatio>portrait</aspectRatio>
@@ -38,13 +38,19 @@
         <resizable>true</resizable>
     </initialWindow>
     <icon>
-        <image36x36>Icons/icon_36.png</image36x36>
-        <image48x48>Icons/icon_48.png</image48x48>
-        <image72x72>Icons/icon_72.png</image72x72>
-        <image96x96>Icons/icon_96.png</image96x96>
-        <image144x144>Icons/icon_144.png</image144x144>
-        <image192x192>Icons/icon_192.png</image192x192>
-    </icon>
+        
+        
+        
+        
+        
+        
+    <image192x192>Icons/icon_192.png</image192x192>
+    <image144x144>Icons/icon_144.png</image144x144>
+    <image96x96>Icons/icon_96.png</image96x96>
+    <image72x72>Icons/icon_72.png</image72x72>
+    <image48x48>Icons/icon_48.png</image48x48>
+    <image36x36>Icons/icon_36.png</image36x36>
+  </icon>
     <customUpdateUI>false</customUpdateUI>
     <allowBrowserInvocation>false</allowBrowserInvocation>
     <android>

@@ -185,6 +185,7 @@
 				{
 					var pos = this.getCoordinates();
 					if (!(pos.l >= 31 && pos.c == 24 && Global.numLevel == 4 && this.firstName == 'Makura')) {
+						Global.PLAYER.releaseWeapon();
 						this.strikePlayer();this.gotoAndStop(2);
 					} else {
 						if (Global.CPT++ > 4) {
