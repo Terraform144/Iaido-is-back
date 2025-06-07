@@ -12,7 +12,7 @@
 
 	[ Juin 2025 -> Jeu minimum viable !!
 		
-		-> 4 niveaux, 15 monstres, 10 objets, 5 portes, 5 pièges, 5 coffres ]
+		-> agrémenter les 4 niveaux, 15 monstres, 10 objets, 5 portes, 5 pièges ]
 
 	"!!! Fait est mieux que parfais" : DAVID DE GAMECODEUR
 

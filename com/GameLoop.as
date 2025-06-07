@@ -20,7 +20,7 @@
     import flash.text.TextField;
     import flash.display.Sprite;
     import flash.geom.Rectangle;
-
+	
 	public class GameLoop extends MovieClip
 	{
 		private var willQuit:Boolean = false;
@@ -30,7 +30,8 @@
 		
 //private var adMob_utx:AdMobClass;
 		
-		public var ia_a:IA_attack;
+		private var ia_a:IA_attack;
+		private var ia_m:IA_move;
 //public var adIsVisible:Boolean;
 
 	//
@@ -43,7 +44,9 @@
 
 			// init the loop
 //adIsVisible=true;
-			
+			ia_m = new IA_move();
+			ia_a = new IA_attack();
+
 //this.adMob_utx = new AdMobClass();
 			
 			// start the loop
@@ -100,15 +103,15 @@
 					var ratio = Global.PLAYER.life / 777; 
 					barreVie.width = ratio*100;
 
-					// if creature is vivace - attacking
-					var ia_m:IA_move = new IA_move(); ia_m.move();
-					ia_a = new IA_attack(); ia_a.attack();
-
 					// actions of the move creature IA
 					if (Global.IS_COMBAT) {
 						Creature.get_creature_position(Global.CLICK_CREATURE);
 					}
 					
+					// if creature is vivace - attacking
+					ia_m.move();
+					ia_a.attack();
+
 					{ // to exec finally
 						if(Global.CLICK_CREATURE) {Global.Dmy.vivace_creature();}
 					}

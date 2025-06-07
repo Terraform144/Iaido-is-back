@@ -21,6 +21,7 @@
 		
 		public function attack(who:Creature=null) {
 			// toremake attack -> passer par la vision
+			
 			try {
 				for each (var creature:Creature in Global.EVENEMENTS.monTableauDeCreatures) 
 				{

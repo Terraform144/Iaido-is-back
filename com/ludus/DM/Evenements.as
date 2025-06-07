@@ -15,6 +15,8 @@
 	import com.ludus.creatures.Oeil_volant;
 	import com.ludus.creatures.MurAttack;
 	import com.ludus.creatures.Coffre;
+	import com.ludus.creatures.Roboto;
+	import com.ludus.creatures.Skeleton;
 
 	import com.ludus.stuffs.Door;
 	import com.ludus.stuffs.Longsword;
@@ -31,9 +33,12 @@
 	import com.ludus.stuffs.caveau;
 	import com.ludus.stuffs.stairs_down;
 	import com.ludus.stuffs.stairs_up;
-	import flash.display.DisplayObject;
-	
+	import com.ludus.stuffs.MarieStatue;
+	import com.ludus.stuffs.Coffre_1;
+
 	import com.ludus.cinematiques.murAttaque;
+	
+	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.display.Shape;
@@ -74,7 +79,7 @@
 							// level 1
 							monTableauDeCreatures[0] = maPopulation['araignee'];
 							monTableauDeCreatures[1] = maPopulation['poilu'];
-
+							monTableauDeCreatures[2] = maPopulation['roboto1'];
 							break;				
 							
 						case 2:
@@ -87,8 +92,7 @@
 							
 						case 3:
 							// level 3
-							//monTableauDeCreatures[0] = maPopulation['carnardBoss'];
-							//monTableauDeCreatures[1] = maPopulation['oeilBoss'];
+							monTableauDeCreatures[0] = maPopulation['skelet1'];
 							break;
 							
 						case 4:
@@ -163,6 +167,8 @@
 			
 			
 			maObjettheque[32] = (new Longsword("s20"));
+			maObjettheque[33] = (new MarieStatue("statue_110", "Marie Statue"));
+			maObjettheque[34] = (new Coffre_1("coffre_10"));
 		}
 		
 		public function loadStuffs(numLevel) {
@@ -188,6 +194,7 @@
 						monTableauDeStuffs[11] = maObjettheque[11];
 						monTableauDeStuffs[12] = maObjettheque[12];
 						monTableauDeStuffs[13] = maObjettheque[13];
+						monTableauDeStuffs[14] = maObjettheque[34];
 						break;
 						
 					case 2:
@@ -212,6 +219,7 @@
 					case 3:
 						monTableauDeStuffs[0] = maObjettheque[22];
 						monTableauDeStuffs[1] = maObjettheque[23];
+						monTableauDeStuffs[3] = maObjettheque[33];
 						break;
 						
 					case 4:
@@ -253,11 +261,13 @@
 			
 			// creatures du niveau 1
 			maPopulation['araignee'] = new Araignee("c_1_5"); maPopulation['poilu']=new Homme_poilu("c_1_10");
+			maPopulation['roboto1'] = new Roboto("c_1_15");
 
 				// coordonnées des créatures
 				// 1ere population
 				maPopulation['araignee'].setCoordinates(1, 18); //5
 				maPopulation['poilu'].setCoordinates(1,9);
+				maPopulation['roboto1'].setCoordinates(6,17);
 
 			// creatures du niveau 2
 			maPopulation['lordtwin'] = new Lord_Khaos("c_2_5"); maPopulation['oeil1'] = (new Oeil_volant("c_2_10")); 
@@ -272,12 +282,11 @@
 
 				
 			// creatures du niveau 3
-			//maPopulation['canardBoss']=new Canard_reptile("c_3_5"); maPopulation['oeilBoss']=new Oeil_volant("c_3_10"); //13
+			maPopulation['skelet1']=new Skeleton("c_3_5"); 
 
 				// coordonnées des créatures
 				// 3eme population
-				//maPopulation['canardBoss'].setCoordinates(1,19); //5
-				//maPopulation['oeilBoss'].setCoordinates(23,9);
+				maPopulation['skelet1'].setCoordinates(23,9); //5
 
 
 			maPopulation['lord']= new Lord_Khaos("c_4_5"); maPopulation['coffre']= new Coffre("c_4_10");

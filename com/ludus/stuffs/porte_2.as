@@ -21,7 +21,7 @@
 					
 					if (this.orientation == 'HORIZONTAL') {
 						//trace("top horizontal");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(3);
 						else
 							this.gotoAndStop(1); 
@@ -34,7 +34,7 @@
 						}
 					} else {
 						//trace("top VERTICAL");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(3);
 						else
 							this.gotoAndStop(1);
@@ -51,7 +51,7 @@
 					
 					if (this.orientation == 'HORIZONTAL') {
 						//trace("bottom horizontal");
-						if(Global.IsOpen > 2)
+						if(Global.IsOpen > 1)
 							this.gotoAndStop(4);
 						else
 							this.gotoAndStop(2);
@@ -63,7 +63,7 @@
 						}
 					} else {
 						//trace("bottom vertical");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(3);
 						else
 							this.gotoAndStop(1); 
@@ -80,7 +80,7 @@
 					if (this.orientation == 'HORIZONTAL') {
 						
 						//trace("right horizotal");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(3);
 						else
 							this.gotoAndStop(1); 
@@ -92,7 +92,7 @@
 						}
 					} else {
 						//trace("right vertical");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(4);
 						else
 							this.gotoAndStop(2); 
@@ -109,7 +109,7 @@
 					if (this.orientation == 'HORIZONTAL') {
 						
 						//trace("left horizontal");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(3);
 						else
 							this.gotoAndStop(1); 
@@ -121,7 +121,7 @@
 						}
 					} else {
 						//trace("left vertical");
-						if(Global.IsOpen >= 2)
+						if(Global.IsOpen >= 1)
 							this.gotoAndStop(4);
 						else
 							this.gotoAndStop(2);

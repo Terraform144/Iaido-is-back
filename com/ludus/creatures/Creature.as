@@ -153,6 +153,8 @@
 				msg = '';
 				switch(Utx.rnd(0, 6)) {case 1:msg = 'I am under spell!!'; break; case 2:msg = 'Daddy, help me!!'; break; case 3:msg = 'Uhh, help!!'; break; }
 				msg_player.setMessage(msg);
+				//release weapon after Makura is begging for help
+				Global.PLAYER.releaseWeapon();Global.HandWeapon = null;
 			}
 			
 			switch (impact) 
@@ -185,7 +187,6 @@
 				{
 					var pos = this.getCoordinates();
 					if (!(pos.l >= 31 && pos.c == 24 && Global.numLevel == 4 && this.firstName == 'Makura')) {
-						Global.PLAYER.releaseWeapon();
 						this.strikePlayer();this.gotoAndStop(2);
 					} else {
 						if (Global.CPT++ > 4) {

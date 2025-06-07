@@ -19,41 +19,8 @@
 		public function Utx()
 		{}
 		
-		public static function pixelate(target:DisplayObject, pixelSize:int):void {
-			var w:int = target.width;
-			var h:int = target.height;
-
-			// Vérifie si le MovieClip est vide ou non attaché à la scène
-			if (w <= 0 || h <= 0 || !target.stage) {
-				trace("Erreur : Le MovieClip est vide ou non attaché à la scène.");
-				return;
-			}
-
-			var reducedW:int = Math.max(1, w / pixelSize);
-			var reducedH:int = Math.max(1, h / pixelSize);
-			
-			if (reducedW > 8192 || reducedH > 8192) {
-				trace("Erreur : Taille BitmapData trop grande !");
-				return;
-			}
-
-			try {
-				var bmd:BitmapData = new BitmapData(reducedW, reducedH, false, 0x000000);
-				//var bmd:BitmapData = new BitmapData(reducedW, reducedH, false);
-				var matrix:Matrix = new Matrix(1 / pixelSize, 0, 0, 1 / pixelSize);
-				bmd.draw(target, matrix);
-			
-				var scaledBmd:BitmapData = new BitmapData(w, h, false);
-				var scaleMatrix:Matrix = new Matrix(pixelSize, 0, 0, pixelSize);
-				scaledBmd.draw(new Bitmap(bmd), scaleMatrix);
-			
-				var bitmap:Bitmap = new Bitmap(scaledBmd);
-				(target as MovieClip).addChild(bitmap);
-				target.visible = false; // Cache le clip original
-			} catch (e:Error) {
-				trace("Erreur : " + e.message);
-			}
-		}
+		/** THIS IS THE LIST OF THE MASSIVE OBJECTS ENCOUNTERED IN THE LABYRINTH */
+		private static var massiveObjectList:Array = ["_d","stair", "statue"];
 
 		public static function rnd(minLimit:uint, maxLimit:uint):uint 
 		{
@@ -73,9 +40,10 @@
 			return false;
 		}
 		
+
 		public static function isMassive(str):Boolean
 		{
-			return Utx.isStr(["stair","_d"], str);
+			return Utx.isStr(massiveObjectList, str);
 		}
 		
 		public static function setTintMc(mc, c:Color)
