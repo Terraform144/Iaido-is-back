@@ -14,6 +14,7 @@
 	import com.ludus.creatures.Creature;
 	import com.ludus.snd.painscream;
 	import com.ludus.stuffs.Arme;
+	import com.ludus.stuffs.Stuff;
 	import com.ludus.stuffs.Hands;
 	import com.ludus.stuffs.Inventaire;
 	import com.managers.CombatManager;
@@ -38,6 +39,7 @@
 		public static var score:int = 0;
 		public static var IS_BATON = false;
 		public static var BRST;
+		public static var SELECTED_ITEM:String;
 		
 		// Combat
 		public static var HandWeapon:Arme;

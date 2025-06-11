@@ -6,11 +6,11 @@
 	import com.Utx;
 
 	
-	public class wMap extends MovieClip {
+	public class wMap extends Stuff {
 		
-		public function wMap() {
-			// constructor code
-			
+		public function wMap(_id) {
+			super(_id);
+			this.id = _id;
 			this.addEventListener(MouseEvent.CLICK, onclick);
 
 		}

@@ -17,8 +17,10 @@
 	public class Player extends MovieClip
 	{
 		public var stats = {mana:320, life:450, dangerousness:30}; // todo restore to 300
-		public var life:int;
+
+		private var _items:Array = [];
 		
+		public var life:int;
 		public var l_hand;
 		
 		public var inventaire:Inventaire;
@@ -136,8 +138,9 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 						{// check si il s'agit d'une arme qui a été prise pour la préparer sur le player
 							setWeapon(_stuff);
 						}
+						
 					}
-
+					
 				} catch (e:Error) {
 
 					trace("prendre:"+e);
@@ -146,6 +149,17 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 			//}
 		}
 		
+		public function setItem(_item:MovieClip = null):void
+		{ /** THIS SET A NEW ITEM IN THE ITEMS ARRAY LIST */
+			if (_item && _items.length < 8) {
+				_items.push(_item.getChildAt(1).name);
+				_item.removeChild(_item.getChildAt(1));
+//_item.alpha = 1;
+			}
+
+trace("Items in Player: " + _items.length + " - " + _items[_items.length - 1]);
+		}
+
 		/**
 	 	* relacher permet de rendre ce qu'il y a dans la main gauche
 	 	*/

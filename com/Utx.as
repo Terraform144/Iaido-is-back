@@ -2,10 +2,19 @@
 {
 	import com.ludus.creatures.Creature;
 	import com.ludus.stuffs.Stuff;
+
+	import com.ludus.stuffs.mFiole;
+	import com.ludus.stuffs.Baton;
+	import com.ludus.stuffs.Falchion;
+	import com.ludus.stuffs.Longsword;
+	import com.ludus.stuffs.Tonfa;
+	import com.ludus.stuffs.wMap;
+
 	import flash.display.MovieClip;
 	import flash.display.DisplayObject;
 	import flash.display.ColorCorrection;
 	
+	import flash.display.DisplayObjectContainer;
 	import avmplus.*;
 	import fl.motion.Color;
 	// pixelate a MovieClip
@@ -40,6 +49,56 @@
 			return false;
 		}
 		
+		public static function flushInventory():void {
+
+            var p_inv_alter = Global.ROOT_CLIP.getChildByName("pan_inventaire_alter");
+
+            try {
+                for(var i= 0; i < 10; i++) {
+
+                    p_inv_alter.getChildByName("case_i_"+i).alpha = 1;
+					p_inv_alter.getChildByName("case_i_"+i).visible = true;
+                }
+            } catch (e:Error) {
+                trace("Error displaying inventory panel: " + e.message);
+            }
+        }
+
+		public static function removeAllChildren(parent:DisplayObjectContainer):void {
+
+			var childrenToRemove:Array = [];
+			parent.alpha = 1;
+			for (var i:int = 0; i < parent.numChildren; i++) {
+				childrenToRemove.push(parent.getChildAt(i));
+			}
+			
+			for each (var child:DisplayObject in childrenToRemove) {
+				if (child is MovieClip) {
+					parent.removeChild(child);
+				}
+			}
+		}
+
+		public static function cleanArray(arr:Array):Array
+		{ /* CLEAN AN ARRAY FROM NULL VALUES */
+			var newArr:Array = [];
+			for each (var item:* in arr) {
+				if ((item != null) && (item != undefined) && (item != "")) {
+					newArr.push(item);
+				}
+			}
+			return newArr;
+		}
+
+		public static function hideInventaire():void
+		{
+			try {
+				var p_inv_alter = Global.ROOT_CLIP.getChildByName("pan_inventaire_alter");
+				p_inv_alter.visible = false;
+			} catch (e:Error) {
+				trace("Error hiding inventory panel: " + e.message);
+			}
+		}
 
 		public static function isMassive(str):Boolean
 		{
@@ -203,6 +262,39 @@
 				repositionCreature(_newCoordinates, _crea);
 				
 			}
+		}
+
+		public static function get_objectByName(str:String)
+		{
+			var obj:Stuff;
+			switch (str){
+				
+				case "mFiole":
+					trace(str)
+					obj = new mFiole("fiole");obj.scaleX=0.4;obj.scaleY=0.4;obj.name = "mFiole";
+					break;
+				case "baton":
+					obj = new Baton("baton");obj.scaleX=0.5;obj.scaleY=0.5;obj.name = "baton";
+					break;
+				case "falchion":
+					obj = new Falchion("falchion");obj.scaleX=0.4;obj.scaleY=0.4;obj.name = "falchion";
+					break;
+				case "longsword":
+					obj = new Longsword("longsword");obj.scaleX=0.4;obj.scaleY=0.4;obj.name = "longsword";
+					break;
+				case "tonfa":
+					obj = new Tonfa("tonfa");obj.scaleX=0.4;obj.scaleY=0.4;obj.name = "tonfa";
+					break;	
+				case "wMap":
+					obj = new wMap("carte_1");obj.scaleX=0.5;obj.scaleY=0.5;obj.name = "wMap";
+					break;
+				//
+				default:break;
+			}
+			// disabling touching
+			Utx.disableTouch(obj);
+
+			return obj;
 		}
 	}
 }

@@ -29,10 +29,8 @@
 				// inventory item visibility toggle
 				if(Global.isInventaire) {
 					p_inv.visible=false;Global.isInventaire=false;
-					//mc_fiole.visible = true; this.visible = true; tab_inv.visible = true; b_hero.visible = true;
 				} else {
-					p_inv.visible = true; Global.isInventaire = true; //tab_inv.visible = false;
-					//mc_fiole.visible = false; this.visible = false; b_hero.visible = false;
+					p_inv.visible = true; Global.isInventaire = true; 
 				}
 			}catch (e:Error) {}
 			

@@ -2,7 +2,6 @@
 	
 	import flash.display.MovieClip;
 	
-	
 	public class Longsword extends Arme {
 		
 		

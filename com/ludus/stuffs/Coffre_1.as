@@ -3,15 +3,15 @@
 
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import com.ludus.Player.Inventaire;
+	import com.ludus.Player.Inventory;
+
 	/**
-	 * ...
-	 * @author ...
+	 * @author zulad
 	 */
 	public class Coffre_1 extends Stuff
 	{
-		private var _items:Array = ["flask","flask","katana"];
-		private var _inventaire:Inventaire;
+		private var _items:Array = ["mFiole","mFiole","baton","mFiole","mFiole","wMap","tonfa","falchion","mFiole","longsword"];
+		private var _inventaire:Inventory;
 
 		public function Coffre_1(_id:String, name:String = "CoffreIaido") 
 		{
@@ -19,19 +19,27 @@
 			super (_id);
 			this.addEventListener(MouseEvent.CLICK, openMe);
 			// init inventaire
-			_inventaire = new Inventaire(); _inventaire.placeItems(_items);
+			_inventaire = new Inventory(_items);
 		}
 		
 		public function openMe(e:MouseEvent):void
 		{
-			if(this.currentFrame == 1) {
-				this.gotoAndStop(2);
-			} else {
-				this.gotoAndStop(1);
-			}
+			try {
+				
+				if(this.currentFrame == 1) {
+					this.gotoAndStop(2);
+					
+					this._inventaire.displayInventaire();
 
-			_inventaire.displayItems();
+				} else {
+					this.gotoAndStop(1);
+				}
+				
+				_inventaire.displayItems();
+
+			} catch(e:Error) {
+				trace("Error opening inventory panel: " + e.message);
+			}
 		}
 	}
-
 }

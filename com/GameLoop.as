@@ -1,5 +1,9 @@
 ﻿package com {
 	
+	/** THIS GAME DEVELOPMENT IS OWNED BY ZULAD THE GAMEGÜ 
+		© Terraform 144 - 2017 -> 2025 
+		
+	*/
 	import com.IA.creatures.IA_attack;
 	import com.IA.creatures.IA_move;
 	import com.admobutils.AdMobClass;
