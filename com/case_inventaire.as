@@ -28,7 +28,8 @@
 					this.alpha = 0.5;
 				}
 				
-				Global.PLAYER.setItem(this);
+				Global.SELECTED_ITEM = this;				
+//Global.PLAYER.setItem(this);
 			
 			} catch (error:Error) {
 				trace("Error handling item click: " + error.message);

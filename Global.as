@@ -39,7 +39,7 @@
 		public static var score:int = 0;
 		public static var IS_BATON = false;
 		public static var BRST;
-		public static var SELECTED_ITEM:String;
+		public static var SELECTED_ITEM:MovieClip;
 		
 		// Combat
 		public static var HandWeapon:Arme;

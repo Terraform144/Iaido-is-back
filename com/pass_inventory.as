@@ -16,10 +16,12 @@
 		public function onClick(e:Event):void 
 		{
 			try {
-
-				Global.PLAYER.setItem(Global.ITEM_CLICKED);
-				this.removeChild(this.getChildAt(1));
-
+				if(Global.SELECTED_ITEM.name.indexOf("case_i_") != -1) {
+					// pass the item to the "Sac de Iaido"
+					Global.ROOT_CLIP.getChildByName("pan_inventaire").visible = true;
+					Global.PLAYER.setItem(Global.SELECTED_ITEM);
+				}
+				
 			} catch (error:Error) {
 				trace("Error handling inventory click: " + error.message);
 			}

@@ -154,11 +154,34 @@ Global.BRST.x = 260; Global.BRST.y = 241;
 			if (_item && _items.length < 8) {
 				_items.push(_item.getChildAt(1).name);
 				_item.removeChild(_item.getChildAt(1));
-//_item.alpha = 1;
+				_item.alpha = 1;
 			}
-
-trace("Items in Player: " + _items.length + " - " + _items[_items.length - 1]);
+			Global.PLAYER.displayInventaire();
+//trace("Items in Player: " + _items.length + " - " + _items[_items.length - 1]);
 		}
+
+        /**
+         * Displays the inventory panel with items
+         */ // TODO refaire ceci pour que cela soit plus générique et prenne en entrée un tableau de string pour faire le display des objets dans les inventaires --> UTX ??
+        public function displayInventaire():void {
+
+            var p_inv_alter = Global.ROOT_CLIP.getChildByName("pan_inventaire");
+			var posX = (p_inv_alter.getChildByName("case_iaido_0")).width/2;
+			var posY = (p_inv_alter.getChildByName("case_iaido_0")).height/2;
+			p_inv_alter.visible = true;
+
+            try {
+                for(var i= 0; i < _items.length; i++) {
+// trace(_items[i]+' '+"case_i_"+i);
+					var obj = Utx.get_objectByName(_items[i]); obj.x += posX; obj.y += posY;
+                     // flush all previous children in the inventory panel
+                    Utx.removeAllChildren(p_inv_alter.getChildByName("case_iaido_"+i));
+                    p_inv_alter.getChildByName("case_iaido_"+i).addChild(obj); 
+                }
+            } catch (e:Error) {
+                trace("Error displaying inventory panel: " + e.message);
+            }
+        }
 
 		/**
 	 	* relacher permet de rendre ce qu'il y a dans la main gauche
